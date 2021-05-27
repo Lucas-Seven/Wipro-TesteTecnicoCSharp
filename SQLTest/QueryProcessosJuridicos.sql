@@ -10,3 +10,8 @@ INNER JOIN tb_Processo ON tb_Andamento.idProcesso = tb_Processo.idProcesso
 WHERE YEAR(tb_Processo.dtEncerramento) = 2013
 GROUP BY tb_Processo.nroProcesso, tb_Andamento.dtAndamento
 ORDER BY tb_Processo.nroProcesso, tb_Andamento.dtAndamento
+
+-- 3. Com base no modelo do banco de dados, construa um comando SQL que liste a quantidade de Data de Encerramento agrupada por ela mesma onde a quantidade da contagem seja maior que 5.
+SELECT COUNT(tb_Processo.dtEncerramento) AS qtdEncerramento, tb_Processo.dtEncerramento FROM tb_Processo
+GROUP BY tb_Processo.dtEncerramento
+HAVING COUNT(tb_Processo.dtEncerramento) > 5
