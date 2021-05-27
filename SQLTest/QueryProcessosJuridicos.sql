@@ -15,3 +15,6 @@ ORDER BY tb_Processo.nroProcesso, tb_Andamento.dtAndamento
 SELECT COUNT(tb_Processo.dtEncerramento) AS qtdEncerramento, tb_Processo.dtEncerramento FROM tb_Processo
 GROUP BY tb_Processo.dtEncerramento
 HAVING COUNT(tb_Processo.dtEncerramento) > 5
+
+-- 4. Possuímos um número de identificação do processo, onde o mesmo contém 12 caracteres com zero à esquerda, contudo nosso modelo e dados ele é apresentado como BigInt. Como fazer para apresentá-lo com 12 caracteres considerando os zeros a esquerda?
+SELECT DISTINCT FORMAT(nroProcesso,'000000000000') FROM tb_Processo
