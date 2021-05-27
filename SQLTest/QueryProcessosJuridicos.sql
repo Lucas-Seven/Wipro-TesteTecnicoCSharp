@@ -2,4 +2,11 @@
 SELECT COUNT(tb_Processo.idStatus) AS qtdProcessos, tb_Status.dsStatus FROM tb_Processo
 INNER JOIN tb_Status ON tb_Processo.idStatus = tb_Status.idStatus
 GROUP BY tb_Processo.idStatus, tb_Status.dsStatus
-ORDER BY tb_Processo.idStatus, tb_Status.dsStatus
+ORDER BY tb_Processo.idStatus, tb_Status.
+
+-- 2. Com base no modelo do banco de dados, construa um comando SQL que liste a maior data de andamento por número de processo, com processos encerrados no ano de 2013.
+SELECT tb_Processo.nroProcesso, MAX(tb_Andamento.dtAndamento) FROM tb_Andamento
+INNER JOIN tb_Processo ON tb_Andamento.idProcesso = tb_Processo.idProcesso
+WHERE YEAR(tb_Processo.dtEncerramento) = 2013
+GROUP BY tb_Processo.nroProcesso, tb_Andamento.dtAndamento
+ORDER BY tb_Processo.nroProcesso, tb_Andamento.dtAndamento
